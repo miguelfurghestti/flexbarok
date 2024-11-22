@@ -9,6 +9,7 @@
         "php": "^8.2",
         "afatmustafa/blade-hugeicons": "^0.0.3",
         "codeat3/blade-jam-icons": "^1.6",
+        "faisal50x/blade-ionicons": "^1.0",
         "laravel/framework": "^11.31",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.5",
