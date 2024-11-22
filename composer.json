@@ -7,10 +7,13 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "afatmustafa/blade-hugeicons": "^0.0.3",
         "codeat3/blade-jam-icons": "^1.6",
         "laravel/framework": "^11.31",
         "laravel/tinker": "^2.9",
-        "livewire/livewire": "^3.5"
+        "livewire/livewire": "^3.5",
+        "mallardduck/blade-boxicons": "^2.4",
+        "ryangjchandler/blade-tabler-icons": "^2.3"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
