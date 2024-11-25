@@ -31,7 +31,7 @@
 
 <body class="bg-zinc-950">
 
-    <div class="grid grid-cols-[110px_1fr_325px] h-screen max-h-svh">
+    <div class="grid grid-cols-[110px_1fr_325px] h-screen overflow-hidden">
         @include("components.navbar")
 
         <div>
@@ -55,7 +55,7 @@
         </div>
 
         <!-- Barra lateral direita -->
-        <aside class="bg-zinc-900">
+        <aside class="bg-zinc-900 h-screen">
             <div class="p-4">
                 <h2 class="text-lg font-semibold">Informações</h2>
                 <p>Este é o painel da direita.</p>

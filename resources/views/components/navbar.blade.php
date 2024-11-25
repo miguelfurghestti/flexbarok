@@ -1,4 +1,4 @@
-<aside class="bg-zinc-900 text-white flex flex-col items-center justify-between">
+<aside class="bg-zinc-900 text-white flex flex-col items-center justify-between h-screen">
 
     <div class="w-full">
         <a href="" class="w-full py-3 bg-[#B1EE81] flex flex-col items-center">
