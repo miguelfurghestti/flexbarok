@@ -57,8 +57,13 @@
         <!-- Barra lateral direita -->
         <aside class="bg-zinc-900 h-screen">
             <div class="p-4">
-                <h2 class="text-lg font-semibold">Informações</h2>
-                <p>Este é o painel da direita.</p>
+                <h2 class="text-sm font-semibold text-white text-center font-['Montserrat']">QUADRAS EM USO</h2>
+                <p class="text-zinc-300 text-sm text-center">Nenhuma quadra em uso neste momento.</p>
+            </div>
+
+            <div class="p-4">
+                <h2 class="text-sm font-semibold text-white text-center font-['Montserrat']">QUADRAS LIVRES</h2>
+                <p class="text-zinc-300 text-sm text-center">Nenhuma quadra em uso neste momento.</p>
             </div>
         </aside>
 
