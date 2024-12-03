@@ -1,13 +1,13 @@
 @extends('dashboard.layout')
 
 @section('conteudo')
-<main class="grid grid-cols-6 p-4 gap-3 font-['Montserrat'] h-screen overflow-y-scroll [&::-webkit-scrollbar]:w-2
+<main class="grid grid-cols-6 p-4 gap-3 font-['Montserrat'] h-screen overflow-y-scroll place-content-start [&::-webkit-scrollbar]:w-2
   [&::-webkit-scrollbar-track]:bg-gray-100
   [&::-webkit-scrollbar-thumb]:bg-gray-300
   dark:[&::-webkit-scrollbar-track]:bg-neutral-700
   dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 pb-28">
 
-    @for($i=1; $i<=10; $i++)
+    @for($i=1; $i<=30; $i++)
         <div class="bg-pgreen rounded-2xl p-2 flex flex-col items-center gap-5 max-h-48 justify-between">
         <div class="flex flex-col items-center gap-2 justify-between h-full">
             <h3 class="text-xs font-semibold">COMANDA</h3>
