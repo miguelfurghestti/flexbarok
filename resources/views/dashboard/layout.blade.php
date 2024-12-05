@@ -17,7 +17,7 @@
         tailwind.config = {
             theme: {
                 fontFamily: {
-                    sans: ['"PT Sans"', 'sans-serif']
+                    sans: ['"Open Sans"', 'sans-serif']
                 },
                 extend: {
                     colors: {

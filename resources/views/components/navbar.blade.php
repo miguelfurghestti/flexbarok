@@ -6,12 +6,12 @@
             <span class="text-zinc-800 font-semibold text-sm">INÍCIO</span>
         </a>
 
-        <a href="" class="w-full py-3 flex flex-col items-center hover:bg-zinc-950 transition duration-500">
+        <a href="/comandas" class="w-full py-3 flex flex-col items-center hover:bg-zinc-950 transition duration-500">
             <x-hugeicons-note-edit class="w-[38px] h-[50px] text-[#B1EE81]" stroke-width="1" />
             <span class="text-white font-semibold text-xs">COMANDAS</span>
         </a>
 
-        <a href="" class="w-full py-3 flex flex-col items-center hover:bg-zinc-950 transition duration-500">
+        <a href="/quadras" class="w-full py-3 flex flex-col items-center hover:bg-zinc-950 transition duration-500">
             <x-tabler-soccer-field class="w-[42px] h-[50px] text-[#B1EE81]" stroke-width="1" />
             <span class="text-white font-semibold text-xs">QUADRAS</span>
         </a>

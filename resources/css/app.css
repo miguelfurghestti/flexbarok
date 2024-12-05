@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.minha-classe {
+    @apply bg-black text-white font-semibold rounded;
+}

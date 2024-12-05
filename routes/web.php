@@ -7,6 +7,10 @@ Route::get('/', function () {
     return view('dashboard.index');
 });
 
-Route::get('/dashboard', function () {
+Route::get('/comandas', function () {
     return view('dashboard.index');
+});
+
+Route::get('/quadras', function () {
+    return view('dashboard.quadras');
 });
