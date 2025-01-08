@@ -25,10 +25,10 @@
             </span>
 
             <div class="flex flex-row gap-2">
-                <span class="text-white flex flex-row gap-1">
+                <span class="text-white flex flex-row gap-1 items-center">
                     <x-tabler-edit stroke-width="1" class="text-pgreen" /> Editar
                 </span>
-                <span class="text-white flex flex-row gap-1">
+                <span class="text-white flex flex-row gap-1 items-center">
                     <x-tabler-trash stroke-width="1" class="text-red-400" /> Excluir
                 </span>
             </div>

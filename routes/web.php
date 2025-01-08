@@ -14,3 +14,7 @@ Route::get('/comandas', function () {
 Route::get('/quadras', function () {
     return view('dashboard.quadras');
 });
+
+Route::get('/clientes', function () {
+    return view('dashboard.clientes');
+});

@@ -16,7 +16,7 @@
             <span class="text-white font-semibold text-xs">QUADRAS</span>
         </a>
 
-        <a href="" class="w-full py-3 flex flex-col items-center hover:bg-zinc-950 transition duration-500">
+        <a href="/clientes" class="w-full py-3 flex flex-col items-center hover:bg-zinc-950 transition duration-500">
             <x-tabler-user-square-rounded class="w-[42px] h-[50px] text-[#B1EE81]" stroke-width="1" />
             <span class="text-white font-semibold text-xs">CLIENTES</span>
         </a>
