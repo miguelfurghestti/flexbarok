@@ -25,7 +25,7 @@
         @for($i=1; $i<=10; $i++)
             
             <div class="w-full flex flex-row justify-between border-b border-zinc-800">
-                <p class="text-white">Nome do Fulano</p>
+                <p class="text-white">Nome do Fulanos</p>
 
                 <div class="flex flex-row gap-2">
                     <span class="text-white flex flex-row gap-1 text-sm items-center">
