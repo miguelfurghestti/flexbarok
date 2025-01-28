@@ -12,6 +12,8 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
+    protected $table = 'users';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -20,6 +22,11 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'phone',
+        'birth',
+        'id_shop',
+        'level',
+        'email_verified_at',
         'password',
     ];
 
@@ -42,7 +49,23 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
+            'birth' => 'date',
             'password' => 'hashed',
         ];
+    }
+
+    public function shop()
+    {
+        return $this->belongsTo(Shops::class, 'id_shop', 'id');
+    }
+
+    public function isAdmin()
+    {
+        return $this->level === 999;
+    }
+
+    public function hasShop()
+    {
+        return $this->id_shop !== null;
     }
 }

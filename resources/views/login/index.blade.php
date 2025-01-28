@@ -31,21 +31,40 @@
 <body class="bg-zinc-950 flex items-center justify-center h-screen">
 
 
-    <div class="bg-zinc-800 rounded-xl p-6 w-96 border border-zinc-500">
-        <h1 class="text-white text-xl font-medium mb-5">Faça o seu acesso</h1>
-        <form action="" class="flex flex-col gap-3">
-            <div class="flex flex-col">
-                <span class="text-white">Email*</span>
-                <input type="text" class="rounded p-2 text-sm" placeholder="Digite seu email">
-            </div>
+    <div class="flex flex-col items-center gap-5">
+        <img class="w-1/2" src="img/logo-large.png" alt="">
 
-            <div class="flex flex-col">
-                <span class="text-white">Senha*</span>
-                <input type="password" class="rounded p-2 text-sm" placeholder="Sua senha">
-            </div>
+        <div class="bg-zinc-800 rounded-xl p-6 w-[420px] border border-zinc-500">
+            <h1 class="text-white text-xl font-medium mb-5">Faça o seu acesso</h1>
+            <form method="POST" class="flex flex-col gap-3" action="{{ route('login') }}">
+                @csrf
 
-            <button class="bg-zinc-600 text-white font-medium rounded p-2 mt-5">Acessar FlexBar</button>
-        </form>
+                <div class="flex flex-col">
+                    <span class="text-white text-sm">Email*</span>
+                    <input type="email" name="email" id="email" class="rounded p-2 text-sm bg-zinc-600 text-zinc-200 placeholder-zinc-200 border border-zinc-500" placeholder="Digite seu email" required>
+                </div>
+
+                <div class="flex flex-col">
+                    <span class="text-white text-sm">Senha*</span>
+                    <input type="password" name="password" id="password" class="rounded p-2 text-sm bg-zinc-600 text-zinc-200 placeholder-zinc-200 border border-zinc-500" placeholder="Sua senha" required>
+                </div>
+
+                <button type="submit" class="bg-pgreen text-green-950 font-medium rounded p-2 mt-5">Acessar FlexBar</button>
+            </form>
+        </div>
+
+        <span class="text-zinc-300">Perdeu o seu acesso? Entre em contato <a href="#" class="font-semibold text-pgreen">aqui</a>!</span>
+
+        @if ($errors->any())
+        <div style="color: red;">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     </div>
 
 </body>
