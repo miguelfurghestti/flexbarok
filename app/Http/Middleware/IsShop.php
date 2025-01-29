@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class IsAdmin
+class IsShop
 {
     /**
      * Handle an incoming request.
@@ -16,11 +16,12 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->level === 999) {
+        // Verifica se o usuário está autenticado e é shop
+        if (Auth::check() && Auth::user()->level === 1) {
             return $next($request); // Permite o acesso
         }
 
-        // Redireciona se não for admin
-        return redirect()->route('index')->withErrors(['access' => 'Acesso não autorizado.']);
+        // Redireciona se não for shop
+        return redirect()->route('login')->withErrors(['access' => 'Acesso não autorizado.']);
     }
 }

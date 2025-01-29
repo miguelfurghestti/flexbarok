@@ -1,4 +1,4 @@
-@extends('dashboard.layout')
+@extends('shop.layout')
 
 @section('conteudo')
 <main class="flex flex-col p-4 gap-5 font-['Montserrat'] h-screen overflow-y-scroll [&::-webkit-scrollbar]:w-2

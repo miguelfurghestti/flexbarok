@@ -38,7 +38,7 @@
         <div>
             <div class="grid grid-cols-[200px_1fr] bg-zinc-900">
                 <section class="bg-zinc-900 h-24 flex items-center justify-center">
-                    <img src="img/logo.png" alt="Logo FlexBar" class="h-5">
+                    <img src="{{ asset('img/logo.png') }}" alt="Logo FlexBar" class="h-5">
                 </section>
 
                 <div class="bg-zinc-800 items-center grid grid-cols-[30px_1fr] px-4 gap-2">
