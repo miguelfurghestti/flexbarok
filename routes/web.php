@@ -9,8 +9,11 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/admin/dashboard', [AdminController::class, 'index'])->middleware(IsAdmin::class)->name('admin.dashboard');
-Route::get('/shop/dashboard', [ShopsController::class, 'index'])->middleware(IsShop::class)->name('shop.dashboard');
 
+Route::get('/shop/dashboard', [ShopsController::class, 'index'])->middleware(IsShop::class)->name('shop.dashboard');
+Route::get('/shop/create', [ShopsController::class, 'create'])->middleware(IsShop::class)->name('shop.create');
+
+Route::get('/login', [LoginController::class, 'loginForm'])->name('loginForm');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 

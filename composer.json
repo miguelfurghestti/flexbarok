@@ -8,6 +8,7 @@
     "require": {
         "php": "^8.2",
         "afatmustafa/blade-hugeicons": "^0.0.3",
+        "blade-ui-kit/blade-heroicons": "^2.5",
         "codeat3/blade-jam-icons": "^1.6",
         "faisal50x/blade-ionicons": "^1.0",
         "laravel/framework": "^11.31",

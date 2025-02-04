@@ -15,6 +15,9 @@ class ShopsController extends Controller
     {
         $user = Auth::user();
 
+        //Verifica se o usuário não tem shop vinculado
+        $showModal = is_null($user->id_shop);
+
         // Verifica se o usuário tem um shop associado
         if (!$user->shop) {
             return redirect()->route('login')->withErrors(['error' => 'Você não tem acesso a um Shop.']);
@@ -31,7 +34,7 @@ class ShopsController extends Controller
             'shop' => $shop,
             'products' => $products,
             'categories' => $categories,
-        ]);
+        ], compact('showModal'));
     }
 
     /**
@@ -39,7 +42,13 @@ class ShopsController extends Controller
      */
     public function create()
     {
-        //
+        $user = Auth::user();
+
+        if (!$user->shop) {
+            return redirect()->route('login')->withErrors(['error' => 'Você não tem acesso a um Shop.']);
+        }
+
+        return view('shop.create');
     }
 
     /**

@@ -2,25 +2,54 @@
 
 @section('conteudo')
 
-@if ($showModal)
-        <!-- Overlay Escuro com Desfoque -->
-        <div class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50">
-            <div class="bg-zinc-900 p-6 rounded-xl shadow-xl text-center flex flex-col items-center w-96">
-                <h2 class="text-lg font-semibold mb-4 text-white flex flex-row gap-2 items-center">
-                    <x-heroicon-o-rocket-launch class="w-5 h-5 text-pgreen group-hover:text-white transition duration-300" stroke-width="2" /> 
-                    <span>Seu cadastro está quase pronto!</span>
-                </h2>
-                <p class="text-zinc-400 mb-6">Cadastre sua empresa para começar a gerenciar seu negócio.</p>
-
-                
-                <button 
-                    class="bg-pgreen text-black px-4 py-2 rounded-lg hover:bg-white transition"
-                    onclick="window.location.href='{{ route('shop.create') }}'">
-                     Adicionar Comércio
-                </button>
+<div class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50">
+    <div class="bg-zinc-900 p-6 rounded-xl shadow-xl text-center flex flex-col items-center w-3/12">
+        <h2 class="text-lg font-semibold mb-4 text-white flex flex-row gap-2 items-center">
+            <x-heroicon-o-rocket-launch class="w-5 h-5 text-pgreen group-hover:text-white transition duration-300" stroke-width="2" /> 
+            <span>Finalize seu cadastro</span>
+        </h2>
+        <p class="text-zinc-400 mb-6">Preencha com os dados da sua empresa.</p>
+        
+        <div class="flex flex-col gap-2">
+            <div class="flex flex-col w-full gap-1">
+                <span class="text-zinc-300 text-xs text-left">Nome da empresa</span>
+                <input type="text" placeholder="Digite o nome da sua empresa" class="rounded-md p-2">
             </div>
+
+            <div class="flex flex-row w-full gap-1 justify-between">
+                <div class="flex flex-col">
+                    <span class="text-zinc-300 text-xs text-left">Fone</span>
+                    <input type="text" placeholder="Telefone comercial" class="rounded-md p-2" required>
+                </div>
+
+                <div class="flex flex-col">
+                    <span class="text-zinc-300 text-xs text-left">E-mail</span>
+                    <input type="email" placeholder="E-mail" class="rounded-md p-2" required>
+                </div>
+            </div>
+
+            <div class="flex w-full gap-2">
+                <div class="flex flex-col w-full">
+                    <label class="text-zinc-300 text-xs text-left">Endereço</label>
+                    <input type="text" placeholder="Endereço" class="rounded-md p-2 w-full" required>
+                </div>
+            
+                <div class="flex flex-col w-auto">
+                    <label class="text-zinc-300 text-xs text-left">Nº</label>
+                    <input type="text" placeholder="1234" class="rounded-md p-2 w-14" required>
+                </div>
+            </div>
+
         </div>
-    @endif
+
+        
+        <button 
+            class="bg-pgreen text-black px-4 py-2 rounded-lg hover:bg-white transition mt-4"
+            onclick="window.location.href='#'">
+             Cadastrar
+        </button>
+    </div>
+</div>
 
 <main class="grid grid-cols-6 p-4 gap-5 font-['Montserrat'] h-screen overflow-y-scroll place-content-start [&::-webkit-scrollbar]:w-2
   [&::-webkit-scrollbar-track]:bg-gray-100

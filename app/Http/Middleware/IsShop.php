@@ -22,6 +22,6 @@ class IsShop
         }
 
         // Redireciona se não for shop
-        return redirect()->route('login')->withErrors(['access' => 'Acesso não autorizado.']);
+        return redirect()->route('loginForm')->withErrors(['access' => 'Acesso não autorizado.']);
     }
 }

@@ -55,6 +55,11 @@ class LoginController extends Controller
         ]);
     }
 
+    public function loginForm()
+    {
+        return view('login.index'); // O caminho da view do formulário de login
+    }
+
     public function logout(Request $request)
     {
         Auth::logout();

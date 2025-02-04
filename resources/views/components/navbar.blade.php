@@ -45,6 +45,14 @@
             <x-tabler-help class="w-5 h-5 text-zinc-500 group-hover:text-white transition duration-300" stroke-width="1" />
             <span class="text-xs text-zinc-500 group-hover:text-white transition duration-300">AJUDA</span>
         </a>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
+
+        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="flex flex-row items-center gap-1 group transition duration-300">
+            <span class="text-xs text-zinc-500 group-hover:text-white transition duration-300">SAIR</span>
+        </a>
     </div>
 
 </aside>
