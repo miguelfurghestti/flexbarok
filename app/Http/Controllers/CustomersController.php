@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Customers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CustomersController extends Controller
 {
@@ -12,7 +13,23 @@ class CustomersController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+
+        //Verifica se o usuário não tem shop vinculado
+        $showModal = is_null($user->id_shop);
+
+        // Verifica se o usuário tem um shop associado
+        if (!$user->shop) {
+            return redirect()->route('login')->withErrors(['error' => 'Você não tem acesso a um Shop.']);
+        }
+
+        // Recupera o shop associado ao usuário logado
+        $shop = $user->shop;
+
+        return view('shop.customers', [
+            'shop' => $shop,
+            'showModal' => $showModal,
+        ]);
     }
 
     /**

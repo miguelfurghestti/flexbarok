@@ -3,7 +3,9 @@
 use App\Http\Controllers\Auth\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CourtsController;
+use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\ShopsController;
+use App\Http\Middleware\HasShop;
 use App\Http\Middleware\IsAdmin;
 use App\Http\Middleware\IsShop;
 use Illuminate\Support\Facades\Route;
@@ -15,7 +17,7 @@ Route::get('/admin/dashboard', [AdminController::class, 'index'])->middleware(Is
 //SHOPS
 Route::get('/shop/dashboard', [ShopsController::class, 'index'])->middleware(IsShop::class)->name('shop.dashboard');
 Route::get('/shop/create', [ShopsController::class, 'create'])->middleware(IsShop::class)->name('shop.create');
-Route::post('/shop/store', [ShopsController::class, 'store'])->name('shop.store');
+Route::post('/shop/store', [ShopsController::class, 'store'])->middleware(IsShop::class)->name('shop.store');
 
 //LOGIN
 Route::get('/login', [LoginController::class, 'loginForm'])->name('loginForm');
@@ -33,6 +35,4 @@ Route::get('/comandas', [ShopsController::class, 'index'])->middleware(IsShop::c
 
 Route::get('/quadras', [CourtsController::class, 'index'])->middleware(IsShop::class)->name('shop.courts');
 
-Route::get('/clientes', function () {
-    return view('dashboard.clientes');
-});
+Route::get('/clientes', [CustomersController::class, 'index'])->middleware(IsShop::class)->name('shop.customers');

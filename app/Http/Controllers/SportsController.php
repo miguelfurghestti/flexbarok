@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sports;
+use App\Models\Sport;
 use Illuminate\Http\Request;
 
 class SportsController extends Controller
@@ -34,7 +34,7 @@ class SportsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Sports $sports)
+    public function show(Sport $sports)
     {
         //
     }
@@ -42,7 +42,7 @@ class SportsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Sports $sports)
+    public function edit(Sport $sports)
     {
         //
     }
@@ -50,7 +50,7 @@ class SportsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Sports $sports)
+    public function update(Request $request, Sport $sports)
     {
         //
     }
@@ -58,7 +58,7 @@ class SportsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Sports $sports)
+    public function destroy(Sport $sports)
     {
         //
     }

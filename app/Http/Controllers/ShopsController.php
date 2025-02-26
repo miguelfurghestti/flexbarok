@@ -22,11 +22,6 @@ class ShopsController extends Controller
         //Verifica se o usuário não tem shop vinculado
         $showModal = is_null($user->id_shop);
 
-        // Verifica se o usuário tem um shop associado
-        // if (!$user->shop) {
-        //     return redirect()->route('login')->withErrors(['error' => 'Você não tem acesso a um Shop.']);
-        // }
-
         $shop = $user->shop;
 
         if ($shop) {
@@ -67,25 +62,24 @@ class ShopsController extends Controller
     {
         $user = Auth::user();
 
-        if ($user->shop) {
+        if ($user->id_shop != NULL) {
             return redirect()->route('shop.dashboard');
         }
 
         //Redirecionar para a página de entrada se a pessoa já possuir um shop vinculado.
-
         return view('shop.create');
     }
 
 
     public function store(Request $request)
     {
-        Log::info('Início do método store', $request->all());
+        //Log::info('Início do método store', $request->all());
 
         $user = Auth::user();
-        Log::info('Usuário autenticado', ['user_id' => $user->id]);
+        //Log::info('Usuário autenticado', ['user_id' => $user->id]);
 
         try {
-            Log::info('Validando dados...');
+            //Log::info('Validando dados...');
             $request->validate([
                 'name' => 'required|string|max:255',
                 'cnpj' => 'required|string|max:18',
@@ -97,7 +91,7 @@ class ShopsController extends Controller
                 'website' => 'nullable|string|max:100',
                 'type_sell' => 'required|in:mesas,comandas',
             ]);
-            Log::info('Dados validados com sucesso');
+            //Log::info('Dados validados com sucesso');
 
             $modules = json_encode([
                 'comandas',
@@ -109,9 +103,9 @@ class ShopsController extends Controller
             ]);
 
             $cleanCnpj = preg_replace('/\D/', '', $request->cnpj);
-            Log::info('CNPJ limpo', ['cnpj' => $cleanCnpj]);
+            //Log::info('CNPJ limpo', ['cnpj' => $cleanCnpj]);
 
-            Log::info('Criando shop...');
+            //Log::info('Criando shop...');
             $shop = Shop::create([
                 'name' => $request->name,
                 'user' => $user->id,
@@ -125,14 +119,14 @@ class ShopsController extends Controller
                 'type_sell' => $request->type_sell,
                 'modules' => $modules,
             ]);
-            Log::info('Shop criado', ['shop_id' => $shop->id]);
+            //Log::info('Shop criado', ['shop_id' => $shop->id]);
 
             $user->id_shop = $shop->id;
             $user->save();
 
-            Log::info('Usuário atualizado', ['id_shop' => $user->id_shop]);
+            //Log::info('Usuário atualizado', ['id_shop' => $user->id_shop]);
 
-            Log::info('Redirecionando para dashboard');
+            //Log::info('Redirecionando para dashboard');
             return redirect()->route('shop.dashboard')->with('success', 'Estabelecimento cadastrado com sucesso!');
         } catch (\Exception $e) {
             Log::error('Erro ao cadastrar shop', [
