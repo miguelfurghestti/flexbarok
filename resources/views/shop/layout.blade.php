@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>FlexBar</title>
+    @livewireStyles
     <link rel="icon" href="{{ url('favicon.png') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,6 +29,7 @@
             }
         }
     </script>
+    
 </head>
 
 <body class="bg-zinc-950">
@@ -65,7 +67,7 @@
                     <div class="w-full bg-zinc-950 rounded-lg p-2 flex flex-col">
                         <div class="flex flex-row items-center justify-between border-b border-zinc-800 pb-2">
                             <div class="flex flex-row items-center gap-2">
-                                <img src="/icones/icon-soccer.png" alt="">
+                                <img src="/icones/ico-futebol.png" alt="">
                                 <p class="text-white">Quadra 02</p>
                             </div>
 
@@ -80,7 +82,7 @@
                     <div class="w-full bg-zinc-950 rounded-lg p-2 flex flex-col">
                         <div class="flex flex-row items-center justify-between border-b border-zinc-800 pb-2">
                             <div class="flex flex-row items-center gap-2">
-                                <img src="/icones/icon-volei.png" alt="">
+                                <img src="/icones/ico-volei.png" alt="">
                                 <p class="text-white">Quadra 02</p>
                             </div>
 
@@ -102,7 +104,7 @@
                 <div class="w-full bg-zinc-500 rounded-lg p-2 flex flex-col">
                     <div class="flex flex-row items-center justify-between border-b border-zinc-600 pb-2">
                         <div class="flex flex-row items-center gap-2">
-                            <img src="/icones/icon-volei.png" alt="">
+                            <img src="/icones/ico-volei.png" alt="">
                             <p class="text-zinc-700">Quadra 02</p>
                         </div>
                     </div>
@@ -116,6 +118,7 @@
         </aside>
 
     </div>
+    @livewireScripts
 </body>
 
 </html>

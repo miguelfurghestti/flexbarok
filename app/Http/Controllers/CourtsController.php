@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Courts;
+use App\Models\Court;
+use App\Models\Sport;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CourtsController extends Controller
 {
@@ -12,7 +14,24 @@ class CourtsController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+
+        //Verifica se o usuário não tem shop vinculado
+        $showModal = is_null($user->id_shop);
+
+        // Verifica se o usuário tem um shop associado
+        if (!$user->shop) {
+            return redirect()->route('login')->withErrors(['error' => 'Você não tem acesso a um Shop.']);
+        }
+
+        // Recupera o shop associado ao usuário logado
+        $shop = $user->shop;
+
+        return view('shop.courts', [
+            'shop' => $shop,
+            'showModal' => $showModal,
+
+        ]);
     }
 
     /**
@@ -34,7 +53,7 @@ class CourtsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Courts $courts)
+    public function show(Court $court)
     {
         //
     }
@@ -42,7 +61,7 @@ class CourtsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Courts $courts)
+    public function edit(Court $court)
     {
         //
     }
@@ -50,7 +69,7 @@ class CourtsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Courts $courts)
+    public function update(Request $request, Court $court)
     {
         //
     }
@@ -58,7 +77,7 @@ class CourtsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Courts $courts)
+    public function destroy(Court $court)
     {
         //
     }

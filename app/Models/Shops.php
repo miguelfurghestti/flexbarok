@@ -66,6 +66,11 @@ class Shops extends Model
         return $this->hasMany(Customers::class, 'id_shop', 'id');
     }
 
+    public function courts()
+    {
+        return $this->hasMany(Court::class, 'id_shop', 'id');
+    }
+
     // Relacionamento com categorias de produtos
     public function productCategories()
     {
