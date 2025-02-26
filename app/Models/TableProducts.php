@@ -29,7 +29,7 @@ class TableProducts extends Model
 
     public function shop()
     {
-        return $this->belongsTo(Shops::class, 'id_shop', 'id');
+        return $this->belongsTo(Shop::class, 'id_shop', 'id');
     }
 
     public function product()

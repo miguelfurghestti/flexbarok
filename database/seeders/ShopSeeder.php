@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Shops;
+use App\Models\Shop;
 use Illuminate\Database\Seeder;
 
 class ShopSeeder extends Seeder
@@ -12,6 +12,6 @@ class ShopSeeder extends Seeder
      */
     public function run(): void
     {
-        Shops::factory()->count(1)->create();
+        Shop::factory()->count(1)->create();
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Shops;
+use App\Models\Shop;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class ShopsFactory extends Factory
 {
 
-    protected $model = Shops::class;
+    protected $model = Shop::class;
     /**
      * Define the model's default state.
      *
@@ -24,7 +24,7 @@ class ShopsFactory extends Factory
             'name' => $this->faker->company(),
             //'user' => User::factory(),
             'user' => User::where('level', 1)->inRandomOrder()->first()->id,
-            'adress' => $this->faker->streetAddress(),
+            'address' => $this->faker->streetAddress(),
             'number' => $this->faker->randomNumber(3),
             'city' => $this->faker->city(),
             'cnpj' => $this->faker->unique()->numerify('########0001##'), // CNPJ fictício

@@ -57,7 +57,7 @@ class User extends Authenticatable
 
     public function shop(): HasOne
     {
-        return $this->hasOne(Shops::class, 'user', 'id');
+        return $this->hasOne(Shop::class, 'user', 'id');
     }
 
     public function isAdmin()

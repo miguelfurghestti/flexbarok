@@ -21,6 +21,6 @@ class CourtStatus extends Model
 
     public function court()
     {
-        return $this->belongsTo(Courts::class, 'id_court', 'id');
+        return $this->belongsTo(Court::class, 'id_court', 'id');
     }
 }

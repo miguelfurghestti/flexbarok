@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_court');
             $table->string('owner_name');
-            $table->timestamp('starts');
-            $table->timestamp('ends');
+            $table->timestamp('starts')->nullable();
+            $table->timestamp('ends')->nullable();
             $table->string('status');
             $table->timestamps();
 

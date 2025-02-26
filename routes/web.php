@@ -15,7 +15,7 @@ Route::get('/admin/dashboard', [AdminController::class, 'index'])->middleware(Is
 //SHOPS
 Route::get('/shop/dashboard', [ShopsController::class, 'index'])->middleware(IsShop::class)->name('shop.dashboard');
 Route::get('/shop/create', [ShopsController::class, 'create'])->middleware(IsShop::class)->name('shop.create');
-Route::post('/shop/store', [ShopsController::class, 'store'])->middleware(IsShop::class)->name('shop.store');
+Route::post('/shop/store', [ShopsController::class, 'store'])->name('shop.store');
 
 //LOGIN
 Route::get('/login', [LoginController::class, 'loginForm'])->name('loginForm');

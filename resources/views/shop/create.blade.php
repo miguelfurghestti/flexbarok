@@ -10,97 +10,104 @@
         </h2>
         <p class="text-zinc-400 mb-6">Preencha com os dados da sua empresa.</p>
         
-        <form action="{{ route('shop.store') }}" method="post">
+        <form action="{{ route('shop.store') }}" method="POST">
             @csrf
 
-        
-        <div class="flex flex-col gap-2 w-full">
-            <div class="flex flex-col w-full gap-1">
-                <span class="text-zinc-300 text-xs text-left">Nome da empresa*</span>
-                <input type="text" name="name" placeholder="Digite o nome da sua empresa" class="rounded-md p-2" required>
-            </div>
-
-            <div class="flex flex-col w-full gap-1">
-                <span class="text-zinc-300 text-xs text-left">CNPJ*</span>
-                <input type="text" name="cnpj" placeholder="00.000.000/0000-00" class="rounded-md p-2" required>
-            </div>
-
-            <div class="flex flex-row w-full gap-2 justify-between">
-                <div class="flex flex-col w-auto">
-                    <span class="text-zinc-300 text-xs text-left">Fone</span>
-                    <input type="text" name="phone" placeholder="Telefone" class="rounded-md p-2 w-36" required>
+            <div class="flex flex-col gap-2 w-full">
+                <div class="flex flex-col w-full gap-1">
+                    <span class="text-zinc-300 text-xs text-left">Nome da empresa*</span>
+                    <input type="text" name="name" value="{{ old('name') }}" placeholder="Digite o nome da sua empresa" class="rounded-md p-2" required>
+                    @error('name') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                 </div>
 
-                <div class="flex flex-col w-full">
-                    <span class="text-zinc-300 text-xs text-left">E-mail</span>
-                    <input type="email" name="email" placeholder="E-mail" class="rounded-md p-2 w-full" required>
+                <div class="flex flex-col w-full gap-1">
+                    <span class="text-zinc-300 text-xs text-left">CNPJ*</span>
+                    <input type="text" name="cnpj" value="{{ old('cnpj') }}" placeholder="00.000.000/0000-00" class="rounded-md p-2" required>
+                    @error('cnpj') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                 </div>
-            </div>
 
-            <div class="flex w-full gap-2">
-                <div class="flex flex-col w-full">
-                    <label class="text-zinc-300 text-xs text-left">Endereço</label>
-                    <input type="text" name="address" placeholder="Endereço" class="rounded-md p-2 w-full" required>
-                </div>
-            
-                <div class="flex flex-col w-auto">
-                    <label class="text-zinc-300 text-xs text-left">Nº</label>
-                    <input type="text" name="number" placeholder="1234" class="rounded-md p-2 w-14" required>
-                </div>
-            </div>
+                <div class="flex flex-row w-full gap-2 justify-between">
+                    <div class="flex flex-col w-auto">
+                        <span class="text-zinc-300 text-xs text-left">Fone</span>
+                        <input type="text" name="phone" value="{{ old('phone') }}" placeholder="Telefone" class="rounded-md p-2 w-36" required>
+                        @error('phone') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                    </div>
 
-            <div class="flex w-full gap-2">
-                <div class="flex flex-col w-full">
-                    <label class="text-zinc-300 text-xs text-left">Cidade</label>
-                    <input type="text" name="city" placeholder="Cidade" class="rounded-md p-2" required>
+                    <div class="flex flex-col w-full">
+                        <span class="text-zinc-300 text-xs text-left">E-mail</span>
+                        <input type="email" name="email" value="{{ old('email') }}" placeholder="E-mail" class="rounded-md p-2 w-full" required>
+                        @error('email') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                    </div>
                 </div>
-            
-                <div class="flex flex-col w-full">
-                    <label class="text-zinc-300 text-xs text-left">Site</label>
-                    <input type="text" name="website" placeholder="www.site.com.br" class="rounded-md p-2">
-                </div>
-            </div>
 
-            <label class="text-zinc-300 text-sm text-center">Funcionamento do seu estabelecimento:</label>
-
-            <div class="flex w-full gap-8 items-center justify-center">
+                <div class="flex w-full gap-2">
+                    <div class="flex flex-col w-full">
+                        <label class="text-zinc-300 text-xs text-left">Endereço</label>
+                        <input type="text" name="address" value="{{ old('address') }}" placeholder="Endereço" class="rounded-md p-2 w-full" required>
+                        @error('address') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                    </div>
                 
-                <div class="inline-flex items-center">
-                  <label class="relative flex cursor-pointer items-center rounded-full p-2" for="on" data-ripple-dark="true">
-                    <input
-                      name="type_sell"
-                      type="radio"
-                      class="peer h-5 w-5 cursor-pointer appearance-none rounded-full border border-slate-300 checked:border-slate-400 transition-all"
-                      id="mesas"
-                      value="mesas"
-                    />
-                    <span class="absolute bg-pgreen w-3 h-3 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></span>
-                  </label>
-
-                  <label class="text-white cursor-pointer text-sm" for="on">Mesas</label>
+                    <div class="flex flex-col w-auto">
+                        <label class="text-zinc-300 text-xs text-left">Nº</label>
+                        <input type="text" name="number" value="{{ old('number') }}" placeholder="1234" class="rounded-md p-2 w-14" required>
+                        @error('number') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                    </div>
                 </div>
 
-                <div class="inline-flex items-center">
-                  <label class="relative flex cursor-pointer items-center rounded-full p-2" for="off">
-                    <input
-                      name="type_sell"
-                      type="radio"
-                      class="peer h-5 w-5 cursor-pointer appearance-none rounded-full border border-slate-300 checked:border-slate-400 transition-all"
-                      id="comandas"
-                      value="comandas"
-                    />
-                    <span class="absolute bg-pgreen w-3 h-3 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></span>
-                  </label>
-                  <label class="text-white cursor-pointer text-sm" for="off">Comandas</label>
+                <div class="flex w-full gap-2">
+                    <div class="flex flex-col w-full">
+                        <label class="text-zinc-300 text-xs text-left">Cidade</label>
+                        <input type="text" name="city" value="{{ old('city') }}" placeholder="Cidade" class="rounded-md p-2" required>
+                        @error('city') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                    </div>
+                
+                    <div class="flex flex-col w-full">
+                        <label class="text-zinc-300 text-xs text-left">Site</label>
+                        <input type="text" name="website" value="{{ old('website') }}" placeholder="www.site.com.br" class="rounded-md p-2">
+                        @error('website') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                    </div>
                 </div>
-              </div>
 
-        </div>
-        
-        <button type="submit" class="bg-pgreen text-black px-4 py-2 rounded-lg hover:bg-white transition mt-4">
-             Cadastrar
-        </button>
-    </form>
+                <label class="text-zinc-300 text-sm text-center">Funcionamento do seu estabelecimento:</label>
+
+                <div class="flex w-full gap-8 items-center justify-center">
+                    <div class="inline-flex items-center">
+                        <label class="relative flex cursor-pointer items-center rounded-full p-2" for="mesas">
+                            <input
+                                name="type_sell"
+                                type="radio"
+                                class="peer h-5 w-5 cursor-pointer appearance-none rounded-full border border-slate-300 checked:border-slate-400 transition-all"
+                                id="mesas"
+                                value="mesas"
+                                {{ old('type_sell') === 'mesas' ? 'checked' : '' }}
+                            />
+                            <span class="absolute bg-pgreen w-3 h-3 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></span>
+                        </label>
+                        <label class="text-white cursor-pointer text-sm" for="mesas">Mesas</label>
+                    </div>
+
+                    <div class="inline-flex items-center">
+                        <label class="relative flex cursor-pointer items-center rounded-full p-2" for="comandas">
+                            <input
+                                name="type_sell"
+                                type="radio"
+                                class="peer h-5 w-5 cursor-pointer appearance-none rounded-full border border-slate-300 checked:border-slate-400 transition-all"
+                                id="comandas"
+                                value="comandas"
+                                {{ old('type_sell') === 'comandas' ? 'checked' : '' }}
+                            />
+                            <span class="absolute bg-pgreen w-3 h-3 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></span>
+                        </label>
+                        <label class="text-white cursor-pointer text-sm" for="comandas">Comandas</label>
+                    </div>
+                </div>
+                @error('type_sell') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+            </div>
+            
+            <button type="submit" class="bg-pgreen text-black px-4 py-2 rounded-lg hover:bg-white transition mt-4">
+                Cadastrar
+            </button>
+        </form>
     </div>
 </div>
 
