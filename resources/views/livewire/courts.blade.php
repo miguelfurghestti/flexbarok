@@ -33,7 +33,7 @@
                             $iconeEsporte = $icones[$court->id_sport] ?? 'ico-default.png'; // Ícone padrão caso o id_sport não exista no mapeamento
                         @endphp
                         <img src="/icones/{{ $iconeEsporte }}" alt="{{ $court->name }}">
-                        <p class="text-white">{{ $court->name }}</p>
+                        <p class="text-white">[{{ $court->sport->name }}] - {{ $court->name }}</p>
                     </span>
                     <div class="flex flex-row gap-2">
                         <button wire:click="openEditModal({{ $court->id }})" class="text-white flex flex-row gap-1 items-center">

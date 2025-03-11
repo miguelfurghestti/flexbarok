@@ -13,4 +13,9 @@ class Sport extends Model
         'name',
         'icon',
     ];
+
+    public function courts()
+    {
+        return $this->hasMany(Court::class, 'id_sport', 'id');
+    }
 }

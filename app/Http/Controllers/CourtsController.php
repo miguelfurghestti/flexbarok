@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Court;
-use App\Models\Sport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
