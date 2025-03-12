@@ -3,6 +3,8 @@
     <div class="w-full">
         <a href="" class="w-full py-3 bg-[#B1EE81] flex flex-col items-center">
             {{-- <x-jam-home class="w-[38px] h-[50px] text-zinc-800" stroke-width="1" /> --}}
+            {{-- <x-fas-cloud class="w-6 h-6 text-gray-500"/> --}}
+            <x-fas-house class="w-[38px] h-[50px] text-zinc-800" />
             <span class="text-zinc-800 font-semibold text-sm">INÍCIO</span>
         </a>
 
@@ -35,6 +37,7 @@
     <div class="w-full flex flex-col items-center gap-3 justify-center py-3">
         <a href="" class="flex flex-row items-center gap-1 group transition duration-300">
             {{-- <x-tabler-settings class="w-5 h-5 text-zinc-500 group-hover:text-white transition duration-300" stroke-width="1" /> --}}
+            <x-fas-cloud class="w-6 h-6 text-gray-500"/>
             <span class="text-xs text-zinc-500 group-hover:text-white transition duration-300">
                 AJUSTES
             </span>
