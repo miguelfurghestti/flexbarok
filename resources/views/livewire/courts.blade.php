@@ -2,8 +2,8 @@
     <!-- Botão para abrir o modal -->
     <div class="flex flex-row justify-between">
         <h1 class="text-white text-2xl font-['Open Sans']">Quadras</h1>
-        <button wire:click="openModal" class="bg-pgreen flex flex-row gap-2 px-3 py-2 rounded-lg items-center font-['Open Sans'] font-semibold text-sm select-none">
-            <x-tabler-square-plus />
+        <button wire:click="openModal" class="bg-pgreen flex flex-row gap-2 px-3 py-2 rounded-full items-center font-['Open Sans'] font-bold text-sm select-none">
+            {{-- <x-solar-add-square-bold class="w-[20px] h-[20px]" /> --}}
             Cadastrar Quadra
         </button>
     </div>
@@ -37,10 +37,10 @@
                     </span>
                     <div class="flex flex-row gap-2">
                         <button wire:click="openEditModal({{ $court->id }})" class="text-white flex flex-row gap-1 items-center">
-                            <x-tabler-edit stroke-width="1" class="text-pgreen" /> Editar
+                            {{-- <x-tabler-edit stroke-width="1" class="text-pgreen" /> Editar --}}
                         </button>
                         <button wire:click="openDeleteModal({{ $court->id }})" class="text-white flex flex-row gap-1 items-center">
-                            <x-tabler-trash stroke-width="1" class="text-red-400" /> Excluir
+                            {{-- <x-tabler-trash stroke-width="1" class="text-red-400" /> Excluir --}}
                         </button>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
         <div class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50">
             <div class="bg-zinc-900 p-6 rounded-xl shadow-xl text-center flex flex-col items-center w-96">
                 <h2 class="text-lg font-semibold mb-3 text-white flex flex-row gap-2 items-center">
-                    <x-tabler-soccer-field class="w-[42px] h-[50px] text-[#B1EE81]" stroke-width="1" />
+                    {{-- <x-tabler-soccer-field class="w-[42px] h-[50px] text-[#B1EE81]" stroke-width="1" /> --}}
                     Cadastrar Quadra
                 </h2>
                 <p class="text-zinc-400 text-sm mb-3">Preencha os dados e cadastre</p>
@@ -87,7 +87,7 @@
         <div class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50">
             <div class="bg-zinc-900 p-6 rounded-xl shadow-xl text-center flex flex-col items-center w-96">
                 <h2 class="text-lg font-semibold mb-3 text-white flex flex-row gap-2 items-center">
-                    <x-tabler-edit class="w-[42px] h-[50px] text-[#B1EE81]" stroke-width="1" />
+                    {{-- <x-tabler-edit class="w-[42px] h-[50px] text-[#B1EE81]" stroke-width="1" /> --}}
                     Editar Quadra
                 </h2>
                 <p class="text-zinc-400 text-sm mb-3">Atualize os dados da quadra</p>
@@ -120,7 +120,7 @@
         <div class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50">
             <div class="bg-zinc-900 p-6 rounded-xl shadow-xl text-center flex flex-col items-center w-96">
                 <h2 class="text-lg font-semibold mb-3 text-white flex flex-row gap-2 items-center">
-                    <x-tabler-trash class="w-[42px] h-[50px] text-red-400" stroke-width="1" />
+                    {{-- <x-tabler-trash class="w-[42px] h-[50px] text-red-400" stroke-width="1" /> --}}
                     Confirmar Exclusão
                 </h2>
                 <p class="text-zinc-400 text-sm mb-3">Tem certeza que deseja excluir esta quadra?</p>

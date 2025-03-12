@@ -1,14 +1,14 @@
 <div>
     <div class="flex flex-row justify-between">
         <h1 class="text-white text-2xl font-['Open Sans']">Clientes</h1>
-        <button wire:click="openModal" href="/clientes/novo-cliente" class="bg-pgreen flex flex-row gap-2 px-3 py-2 rounded-lg items-center font-['Open Sans'] font-semibold text-sm select-none">
-            <x-tabler-square-plus />
+        <button wire:click="openModal" href="/clientes/novo-cliente" class="bg-pgreen flex flex-row gap-2 px-3 py-2 rounded-full items-center font-['Open Sans'] font-bold text-sm select-none">
+            {{-- <x-tabler-user-filled class="w-[18px] h-[18px]" /> --}}
             Cadastrar Cliente
         </button>
     </div>
 
     <div class="flex flex-row p-3 rounded-lg gap-2 bg-gray-400 mt-4">
-        <x-tabler-search class="w-[25px] h-[25px] text-gray-200" stroke-width="2" />
+        {{-- <x-tabler-search class="w-[25px] h-[25px] text-gray-200" stroke-width="2" /> --}}
         <input 
         wire:model.live="search"
         class="placeholder-gray-200 bg-transparent w-full outline-none" 
@@ -30,10 +30,10 @@
 
                 <div class="flex flex-row gap-2">
                     <button wire:click="openEditModal({{ $customer->id }})" class="text-white flex flex-row gap-1 text-sm items-center">
-                        <x-tabler-edit stroke-width="1" class="text-pgreen" /> Editar
+                        {{-- <x-tabler-edit stroke-width="1" class="text-pgreen" /> Editar --}}
                     </button>
                     <button wire:click="openDeleteModal({{ $customer->id }})" class="text-white flex flex-row gap-1 text-sm items-center">
-                        <x-tabler-trash stroke-width="1" class="text-red-400" /> Excluir
+                        {{-- <x-tabler-trash stroke-width="1" class="text-red-400" /> Excluir --}}
                     </button>
                 </div>
             </div>
@@ -46,7 +46,7 @@
         <div class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50">
             <div class="bg-zinc-900 p-6 rounded-xl shadow-xl text-center flex flex-col items-center w-96">
                 <h2 class="text-lg font-semibold mb-3 text-white flex flex-row gap-2 items-center">
-                    <x-tabler-user-square-rounded class="w-[42px] h-[50px] text-[#B1EE81]" stroke-width="1" />
+                    {{-- <x-tabler-user-square-rounded class="w-[42px] h-[50px] text-[#B1EE81]" stroke-width="1" /> --}}
                     Cadastrar Cliente
                 </h2>
                 <p class="text-zinc-400 text-sm mb-3">Preencha os dados e cadastre</p>
@@ -114,7 +114,7 @@
         <div class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50">
             <div class="bg-zinc-900 p-6 rounded-xl shadow-xl text-center flex flex-col items-center w-96">
                 <h2 class="text-lg font-semibold mb-3 text-white flex flex-row gap-2 items-center">
-                    <x-tabler-user-square-rounded class="w-[42px] h-[50px] text-[#B1EE81]" stroke-width="1" />
+                    {{-- <x-tabler-user-square-rounded class="w-[42px] h-[50px] text-[#B1EE81]" stroke-width="1" /> --}}
                     Editar Cliente
                 </h2>
                 <p class="text-zinc-400 text-sm mb-3">Atualize os dados do cliente</p>
@@ -182,7 +182,7 @@
         <div class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50">
             <div class="bg-zinc-900 p-6 rounded-xl shadow-xl text-center flex flex-col items-center w-96">
                 <h2 class="text-lg font-semibold mb-3 text-white flex flex-row gap-2 items-center">
-                    <x-tabler-trash class="w-[42px] h-[50px] text-red-400" stroke-width="1" />
+                    {{-- <x-tabler-trash class="w-[42px] h-[50px] text-red-400" stroke-width="1" /> --}}
                     Confirmar Exclusão
                 </h2>
                 <p class="text-zinc-400 text-sm mb-3">Tem certeza que deseja excluir este cliente?</p>

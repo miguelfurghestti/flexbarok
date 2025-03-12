@@ -21,7 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('nome_da_tabela', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->string('level')->change();
         });
     }

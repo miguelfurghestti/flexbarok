@@ -45,7 +45,7 @@
 
                 <div class="bg-zinc-800 items-center grid grid-cols-[30px_1fr] px-4 gap-2">
 
-                    <x-ionicon-search-sharp class="text-white" />
+                    {{-- <x-ionicon-search-sharp class="text-white" /> --}}
 
                     <form action="">
                         <input type="text" placeholder="NÚMERO DA COMANDA OU NOME DO CLIENTE" class="w-full bg-transparent border-0 outline-none text-sm text-white py-2 placeholder-zinc-500">

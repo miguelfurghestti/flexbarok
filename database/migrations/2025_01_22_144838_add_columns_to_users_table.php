@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('phone')->after('email'); // Adicionando o campo phone após email
+            $table->string('phone')->nullable()->after('email'); // Adicionando o campo phone após email
             $table->date('birth')->nullable()->after('phone'); // Permitir NULL inicialmente
             $table->unsignedBigInteger('id_shop')->nullable()->after('birth'); // Permitir NULL para id_shop
             $table->string('level')->nullable()->after('id_shop'); // Permitir NULL para level
