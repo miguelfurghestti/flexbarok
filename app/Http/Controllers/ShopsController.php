@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Orders;
 use App\Models\Shop;
 use App\Models\Tables;
@@ -33,7 +34,7 @@ class ShopsController extends Controller
             // Consulta dinamicamente a tabela correta
             $items = ($type_sell === 'mesas')
                 ? Tables::where('id_shop', $shop->id)->get()
-                : Orders::where('id_shop', $shop->id)->get();
+                : Order::where('id_shop', $shop->id)->get();
         } else {
             // Define valores padrão quando o shop é null
             $products = collect(); // Coleção vazia
@@ -67,7 +68,7 @@ class ShopsController extends Controller
         }
 
         //Redirecionar para a página de entrada se a pessoa já possuir um shop vinculado.
-        return view('shop.create');
+        return view('shop.createShop');
     }
 
 

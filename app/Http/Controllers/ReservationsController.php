@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reservation;
 use App\Models\Reservations;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReservationsController extends Controller
 {
@@ -12,7 +14,19 @@ class ReservationsController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+
+        // Verifica se o usuário tem um shop associado
+        if (!$user->shop) {
+            return redirect()->route('login')->withErrors(['error' => 'Você não tem acesso a um Shop.']);
+        }
+
+        // Recupera o shop associado ao usuário logado
+        $shop = $user->shop;
+
+        return view('shop.reservations', [
+            'shop' => $shop,
+        ]);
     }
 
     /**
@@ -34,7 +48,7 @@ class ReservationsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Reservations $reservations)
+    public function show(Reservation $reservations)
     {
         //
     }
@@ -42,7 +56,7 @@ class ReservationsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Reservations $reservations)
+    public function edit(Reservation $reservation)
     {
         //
     }
@@ -50,7 +64,7 @@ class ReservationsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Reservations $reservations)
+    public function update(Request $request, Reservation $reservations)
     {
         //
     }
@@ -58,7 +72,7 @@ class ReservationsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Reservations $reservations)
+    public function destroy(Reservation $reservations)
     {
         //
     }

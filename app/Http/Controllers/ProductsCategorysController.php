@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ProductsCategorys;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductsCategorysController extends Controller
 {
@@ -12,7 +13,19 @@ class ProductsCategorysController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+
+        // Verifica se o usuário tem um shop associado
+        if (!$user->shop) {
+            return redirect()->route('login')->withErrors(['error' => 'Você não tem acesso a um Shop.']);
+        }
+
+        // Recupera o shop associado ao usuário logado
+        $shop = $user->shop;
+
+        return view('shop.productCategories', [
+            'shop' => $shop,
+        ]);
     }
 
     /**

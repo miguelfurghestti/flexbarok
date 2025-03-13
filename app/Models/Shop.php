@@ -63,7 +63,7 @@ class Shop extends Model
 
     public function customers()
     {
-        return $this->hasMany(Customers::class, 'id_shop', 'id');
+        return $this->hasMany(Customer::class, 'id_shop', 'id');
     }
 
     public function courts()

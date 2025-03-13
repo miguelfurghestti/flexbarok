@@ -4,8 +4,9 @@ use App\Http\Controllers\Auth\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CourtsController;
 use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\ProductsCategorysController;
+use App\Http\Controllers\ReservationsController;
 use App\Http\Controllers\ShopsController;
-use App\Http\Middleware\HasShop;
 use App\Http\Middleware\IsAdmin;
 use App\Http\Middleware\IsShop;
 use Illuminate\Support\Facades\Route;
@@ -27,7 +28,6 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //INDEX
 Route::get('/', function () {
-    // return view('welcome');
     return view('login.index');
 })->name('index');
 
@@ -36,3 +36,7 @@ Route::get('/comandas', [ShopsController::class, 'index'])->middleware(IsShop::c
 Route::get('/quadras', [CourtsController::class, 'index'])->middleware(IsShop::class)->name('shop.courts');
 
 Route::get('/clientes', [CustomersController::class, 'index'])->middleware(IsShop::class)->name('shop.customers');
+
+Route::get('/reservas', [ReservationsController::class, 'index'])->middleware(IsShop::class)->name('shop.reservations');
+
+Route::get('/cardapio', [ProductsCategorysController::class, 'index'])->middleware(IsShop::class)->name('shop.products');
