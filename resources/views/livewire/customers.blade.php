@@ -30,10 +30,12 @@
 
                 <div class="flex flex-row gap-2">
                     <button wire:click="openEditModal({{ $customer->id }})" class="text-white flex flex-row gap-1 text-sm items-center">
-                        {{-- <x-tabler-edit stroke-width="1" class="text-pgreen" /> Editar --}}
+                        <x-fas-pen-to-square class="w-4 h-4 text-gray-500"/>
+                        Editar
                     </button>
                     <button wire:click="openDeleteModal({{ $customer->id }})" class="text-white flex flex-row gap-1 text-sm items-center">
-                        {{-- <x-tabler-trash stroke-width="1" class="text-red-400" /> Excluir --}}
+                        <x-fas-trash class="w-4 h-4 text-gray-500"/>
+                        Excluir
                     </button>
                 </div>
             </div>
