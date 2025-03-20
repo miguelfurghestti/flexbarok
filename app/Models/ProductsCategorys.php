@@ -23,6 +23,7 @@ class ProductsCategorys extends Model
      */
     protected $fillable = [
         'name',
+        'icon',
         'id_shop',
     ];
 
