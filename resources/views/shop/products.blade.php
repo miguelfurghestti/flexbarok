@@ -7,17 +7,14 @@
   dark:[&::-webkit-scrollbar-track]:bg-neutral-700
   dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 pb-28">
 
- {{-- <livewire:product-categories wire:lazy /> --}}
-
-<h1 class="text-white">{{ $category->name }}</h1>
-<p class="text-white">{{ $products }}</p>
+ <livewire:products wire:lazy />
   
 </main>
 
-{{-- <script>
-    Livewire.on('productCategoryAdded', () => {
+<script>
+    Livewire.on('productAdded', () => {
         // Força a atualização do componente
         Livewire.dispatch('refreshComponent');
     });
-  </script> --}}
+  </script>
 @endsection
