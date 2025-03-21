@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CourtsController;
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\ProductsCategorysController;
+use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ReservationsController;
 use App\Http\Controllers\ShopsController;
 use App\Http\Middleware\IsAdmin;
@@ -39,4 +40,7 @@ Route::get('/clientes', [CustomersController::class, 'index'])->middleware(IsSho
 
 Route::get('/reservas', [ReservationsController::class, 'index'])->middleware(IsShop::class)->name('shop.reservations');
 
+
+//CARDÁPIO
 Route::get('/cardapio', [ProductsCategorysController::class, 'index'])->middleware(IsShop::class)->name('shop.products');
+Route::get('/cardapio/{slug}', [ProductsController::class, 'showByCategory'])->middleware(IsShop::class)->name('shop.category.products');

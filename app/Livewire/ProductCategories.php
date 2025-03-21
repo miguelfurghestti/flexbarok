@@ -47,9 +47,9 @@ class ProductCategories extends Component
         $user = Auth::user();
         $shop = $user->shop;
 
-        $categorys = ProductsCategorys::where('id_shop', $shop->id)->get();
+        $productCategorys = ProductsCategorys::where('id_shop', $shop->id)->get();
 
-        return view('livewire.product-categories', compact('categorys'));
+        return view('livewire.product-categories', compact('productCategorys'));
     }
 
     public function openModal()
@@ -86,5 +86,56 @@ class ProductCategories extends Component
         } catch (\Exception $e) {
             $this->addError('general', 'Erro ao salvar cliente: ' . $e->getMessage());
         }
+    }
+
+    public function openEditModal($productCategoryId)
+    {
+        $this->showEditModal = true;
+        $productCategory = ProductsCategorys::findOrFail($productCategoryId);
+        $this->productCategoryIdToEdit = $productCategory->id;
+        $this->name = $productCategory->name;
+        $this->icon = $productCategory->icon;
+    }
+
+    public function closeEditModal()
+    {
+        $this->showEditModal = false;
+        $this->reset(['productCategoryIdToEdit', 'name', 'icon']);
+    }
+
+    public function update()
+    {
+        $this->validate();
+
+        $productCategory = ProductsCategorys::findOrFail($this->productCategoryIdToEdit);
+        $productCategory->update([
+            'name' => $this->name,
+            'icon' => $this->icon,
+        ]);
+
+        $this->closeEditModal();
+        $this->dispatch('productCategoryUpdated');
+    }
+
+    // Modal de exclusão
+    public function openDeleteModal($productCategoryId)
+    {
+        $this->productCategoryIdToDelete = $productCategoryId;
+        $this->showDeleteModal = true;
+    }
+
+    public function closeDeleteModal()
+    {
+        $this->showDeleteModal = false;
+        $this->reset(['productCategoryIdToDelete']);
+    }
+
+    public function delete()
+    {
+        $productCategory = ProductsCategorys::findOrFail($this->productCategoryIdToDelete);
+        $productCategory->delete();
+
+        $this->closeDeleteModal();
+        $this->dispatch('productCategoryDeleted');
     }
 }
