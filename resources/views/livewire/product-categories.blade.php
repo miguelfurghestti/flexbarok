@@ -43,7 +43,7 @@
                                     class="w-[30px] h-[30px] text-zinc-700" 
                                 />
                                 <div class="flex flex-col">
-                                    <h1 class="font-semibold">{{ $category->name }}</h1>
+                                    <h1 class="font-semibold"><a href="/cardapio/{{ $category->slug }}">{{ $category->name }}</a></h1>
                                     <p class="text-xs font-medium">{{ $category->products->count() ?? '0' }} itens</p>
                                 </div>
                             </div>

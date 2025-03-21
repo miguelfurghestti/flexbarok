@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Products;
 use App\Models\ProductsCategorys;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductsController extends Controller
 {
@@ -14,14 +15,20 @@ class ProductsController extends Controller
      */
     public function showByCategory($slug)
     {
+        $user = Auth::user();
+        $shop = $user->shop;
         // Buscar a categoria pelo slug
-        $category = ProductsCategorys::where('slug', $slug)->firstOrFail();
+        $category = ProductsCategorys::where('slug', $slug)
+            ->where('id_shop', $shop->id)
+            ->firstOrFail();
 
         // Buscar produtos relacionados à categoria
-        $products = Products::where('id_category', $category->id)->get();
+        $products = Products::where('id_category', $category->id)
+            ->where('id_shop', $shop->id)
+            ->get();
 
         // Retornar a view com os dados
-        return view('produtos.index', compact('categoria', 'produtos'));
+        return view('shop.products', compact('category', 'products'));
     }
     /**
      * Display a listing of the resource.

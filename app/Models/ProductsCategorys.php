@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class ProductsCategorys extends Model
 {
@@ -36,6 +37,41 @@ class ProductsCategorys extends Model
         'created_at',
         'updated_at',
     ];
+
+    /**
+     * Gera slug automaticamente ao criar a categoria
+     *
+     * @var array
+     */
+    protected static function booted()
+    {
+        static::creating(function ($category) {
+            $originalSlug = Str::slug($category->name);
+            $slug = $originalSlug;
+            $count = 1;
+
+            // Verifica se o slug já existe e incrementa se necessário
+            while (ProductsCategorys::where('slug', $slug)->where('id_shop', $category->id_shop)->exists()) {
+                $slug = $originalSlug . '-' . $count;
+                $count++;
+            }
+
+            $category->slug = $slug;
+        });
+
+        static::updating(function ($category) {
+            $originalSlug = Str::slug($category->name);
+            $slug = $originalSlug;
+            $count = 1;
+
+            while (ProductsCategorys::where('slug', $slug)->where('id_shop', $category->id_shop)->where('id', '!=', $category->id)->exists()) {
+                $slug = $originalSlug . '-' . $count;
+                $count++;
+            }
+
+            $category->slug = $slug;
+        });
+    }
 
     /**
      * Os relacionamentos do modelo.
