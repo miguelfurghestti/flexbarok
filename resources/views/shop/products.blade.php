@@ -7,8 +7,8 @@
   dark:[&::-webkit-scrollbar-track]:bg-neutral-700
   dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 pb-28">
 
- <livewire:products wire:lazy />
-  
+    <livewire:products :slug="$slug" wire:lazy />
+
 </main>
 
 <script>
@@ -16,5 +16,5 @@
         // Força a atualização do componente
         Livewire.dispatch('refreshComponent');
     });
-  </script>
+</script>
 @endsection

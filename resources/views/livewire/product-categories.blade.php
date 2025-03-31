@@ -8,58 +8,61 @@
     </div>
 
     <!-- Lista de Quadras -->
-    <div class="grid grid-cols-4 gap-4 mt-4">
 
-        @if($productCategorys->isEmpty())
-            <div class="text-center text-lg mt-4 text-gray-500">
-                Ainda não tem nenhuma categoria cadastrada!
-            </div>
+
+    @if($productCategorys->isEmpty())
+    <div class="flex flex-col w-full gap-2 rounded-lg px-2 py-3">
+        <div class="text-center text-lg mt-4 text-gray-500">
+            Nenhuma categoria encontrada!
+        </div>
         @else
+        <div class="grid grid-cols-4 gap-4 mt-4">
             @php
-                // Mapeamento das cores
-                $colors = [
-                    '#CFDDDB',
-                    '#E4CDED',
-                    '#C2DBE9',
-                    '#C9CAEF',
-                    '#DDD5CF',
-                    '#EDEDCD',
-                    '#CDD8ED',
-                    '#EDCDCD',
-                ];
-                $totalColors = count($colors);
+            // Mapeamento das cores
+            $colors = [
+            '#CFDDDB',
+            '#E4CDED',
+            '#C2DBE9',
+            '#C9CAEF',
+            '#DDD5CF',
+            '#EDEDCD',
+            '#CDD8ED',
+            '#EDCDCD',
+            ];
+            $totalColors = count($colors);
             @endphp
 
             @foreach ($productCategorys as $index => $category)
-                        @php
-                            $colorIndex = $index % $totalColors;
-                            $currentColor = $colors[$colorIndex];
-                        @endphp
-                
-                        <div class="flex flex-row justify-between bg-[{{ $currentColor }}] text-zinc-900 px-3 py-5 rounded-2xl">
-                            <div class="flex flex-col justify-start gap-8">
-                                <x-dynamic-component 
-                                    :component="'fas-' . $category->icon" 
-                                    class="w-[30px] h-[30px] text-zinc-700" 
-                                />
-                                <div class="flex flex-col">
-                                    <h1 class="font-semibold"><a href="/cardapio/{{ $category->slug }}">{{ $category->name }}</a></h1>
-                                    <p class="text-xs font-medium">{{ $category->products->count() ?? '0' }} itens</p>
-                                </div>
-                            </div>
-                            <div class="flex flex-col justify-between h-full">
-                                <x-fas-pen wire:click="openEditModal({{ $category->id }})" class="w-[15px] h-[15px] text-zinc-700 cursor-pointer" />
-                                <x-fas-trash wire:click="openDeleteModal({{ $category->id }})" class="w-[15px] h-[15px] text-zinc-700 cursor-pointer" />
-                            </div>
+            @php
+            $colorIndex = $index % $totalColors;
+            $currentColor = $colors[$colorIndex];
+            @endphp
+
+            <div class="flex flex-row justify-between bg-[{{ $currentColor }}] text-zinc-900 px-3 py-5 rounded-2xl">
+                <a href="/cardapio/{{ $category->slug }}" class="w-full">
+                    <div class="flex flex-col justify-start gap-8">
+                        <x-dynamic-component
+                            :component="'fas-' . $category->icon"
+                            class="w-[30px] h-[30px] text-zinc-700" />
+                        <div class="flex flex-col">
+                            <h1 class="font-semibold">{{ $category->name }}</h1>
+                            <p class="text-xs font-medium">{{ $category->products->count() ?? '0' }} itens</p>
                         </div>
+                    </div>
+                </a>
+                <div class="flex flex-col justify-between h-full">
+                    <x-fas-pen wire:click="openEditModal({{ $category->id }})" class="w-[15px] h-[15px] text-zinc-700 cursor-pointer" />
+                    <x-fas-trash wire:click="openDeleteModal({{ $category->id }})" class="w-[15px] h-[15px] text-zinc-700 cursor-pointer" />
+                </div>
+            </div>
             @endforeach
-        @endif
-      
+            @endif
 
-    </div>  
 
-    <!-- Modal de Cadastro -->
-    @if($showModal)
+        </div>
+
+        <!-- Modal de Cadastro -->
+        @if($showModal)
         <div class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50">
             <div class="bg-zinc-900 p-6 rounded-xl shadow-xl text-center flex flex-col items-center w-96">
                 <h2 class="text-lg font-semibold mb-3 text-white flex flex-row gap-2 items-center">
@@ -75,7 +78,7 @@
 
                     <h1 class="text-zinc-400 text-sm">Selecione o ícone desta categoria</h1>
                     <div class="grid grid-cols-4 gap-3">
-                        
+
                         <div class="flex items-center px-4 border border-zinc-600 rounded-sm cursor-pointer">
                             <input checked id="bowl-food" type="radio" wire:model="icon" value="bowl-food" name="bordered-radio" class="w-4 h-4  bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
                             <label for="bowl-food" class="py-4 ms-2 text-sm font-medium text-gray-900"><x-fas-bowl-food class="w-4 h-4 text-[#B1EE81]" /></label>
@@ -90,7 +93,7 @@
                             <input id="burger" type="radio" wire:model="icon" value="burger" name="bordered-radio" class="w-4 h-4 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
                             <label for="burger" class="py-4 ms-2 text-sm font-medium text-gray-900"><x-fas-burger class="w-4 h-4 text-[#B1EE81]" /></label>
                         </div>
-                        
+
                         <div class="flex items-center ps-4 border border-zinc-600 rounded-sm">
                             <input id="mug-hot" type="radio" wire:model="icon" value="mug-hot" name="bordered-radio" class="w-4 h-4 bg-gray-100 border-gray-300 focus:ring-blue-500focus:ring-2">
                             <label for="mug-hot" class="py-4 ms-2 text-sm font-medium text-gray-900"><x-fas-mug-hot class="w-4 h-4 text-[#B1EE81]" /></label>
@@ -166,10 +169,10 @@
                 </div>
             </div>
         </div>
-    @endif
+        @endif
 
-    <!-- Modal de Cadastro -->
-    @if($showEditModal)
+        <!-- Modal de Cadastro -->
+        @if($showEditModal)
         <div class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50">
             <div class="bg-zinc-900 p-6 rounded-xl shadow-xl text-center flex flex-col items-center w-96">
                 <h2 class="text-lg font-semibold mb-3 text-white flex flex-row gap-2 items-center">
@@ -185,7 +188,7 @@
 
                     <h1 class="text-zinc-400 text-sm">Selecione o ícone desta categoria</h1>
                     <div class="grid grid-cols-4 gap-3">
-                        
+
                         <div class="flex items-center px-4 border border-zinc-600 rounded-sm cursor-pointer">
                             <input checked id="bowl-food" type="radio" wire:model="icon" value="bowl-food" name="bordered-radio" class="w-4 h-4  bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
                             <label for="bowl-food" class="py-4 ms-2 text-sm font-medium text-gray-900"><x-fas-bowl-food class="w-4 h-4 text-[#B1EE81]" /></label>
@@ -200,7 +203,7 @@
                             <input id="burger" type="radio" wire:model="icon" value="burger" name="bordered-radio" class="w-4 h-4 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
                             <label for="burger" class="py-4 ms-2 text-sm font-medium text-gray-900"><x-fas-burger class="w-4 h-4 text-[#B1EE81]" /></label>
                         </div>
-                        
+
                         <div class="flex items-center ps-4 border border-zinc-600 rounded-sm">
                             <input id="mug-hot" type="radio" wire:model="icon" value="mug-hot" name="bordered-radio" class="w-4 h-4 bg-gray-100 border-gray-300 focus:ring-blue-500focus:ring-2">
                             <label for="mug-hot" class="py-4 ms-2 text-sm font-medium text-gray-900"><x-fas-mug-hot class="w-4 h-4 text-[#B1EE81]" /></label>
@@ -276,10 +279,10 @@
                 </div>
             </div>
         </div>
-    @endif
+        @endif
 
-    <!-- Modal de Confirmação de Exclusão -->
-    @if($showDeleteModal)
+        <!-- Modal de Confirmação de Exclusão -->
+        @if($showDeleteModal)
         <div class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50">
             <div class="bg-zinc-900 p-6 rounded-xl shadow-xl text-center flex flex-col items-center w-96">
                 <h2 class="text-lg font-semibold mb-3 text-white flex flex-row gap-2 items-center">
@@ -294,8 +297,7 @@
                 </div>
             </div>
         </div>
-    @endif
+        @endif
 
-    
-</div>
 
+    </div>

@@ -5,11 +5,11 @@
 <div class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50">
     <div class="bg-zinc-900 p-6 rounded-xl shadow-xl text-center flex flex-col items-center">
         <h2 class="text-lg font-semibold mb-4 text-white flex flex-row gap-2 items-center">
-            <x-heroicon-o-rocket-launch class="w-5 h-5 text-pgreen group-hover:text-white transition duration-300" stroke-width="2" /> 
+            <x-fas-rocket class="w-5 h-5 text-pgreen group-hover:text-white transition duration-300" stroke-width="2" />
             <span>Finalize seu cadastro</span>
         </h2>
         <p class="text-zinc-400 mb-6">Preencha com os dados da sua empresa.</p>
-        
+
         <form action="{{ route('shop.store') }}" method="POST">
             @csrf
 
@@ -46,7 +46,7 @@
                         <input type="text" name="address" value="{{ old('address') }}" placeholder="Endereço" class="rounded-md p-2 w-full" required>
                         @error('address') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                     </div>
-                
+
                     <div class="flex flex-col w-auto">
                         <label class="text-zinc-300 text-xs text-left">Nº</label>
                         <input type="text" name="number" value="{{ old('number') }}" placeholder="1234" class="rounded-md p-2 w-14" required>
@@ -60,7 +60,7 @@
                         <input type="text" name="city" value="{{ old('city') }}" placeholder="Cidade" class="rounded-md p-2" required>
                         @error('city') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                     </div>
-                
+
                     <div class="flex flex-col w-full">
                         <label class="text-zinc-300 text-xs text-left">Site</label>
                         <input type="text" name="website" value="{{ old('website') }}" placeholder="www.site.com.br" class="rounded-md p-2">
@@ -79,8 +79,7 @@
                                 class="peer h-5 w-5 cursor-pointer appearance-none rounded-full border border-slate-300 checked:border-slate-400 transition-all"
                                 id="mesas"
                                 value="mesas"
-                                {{ old('type_sell') === 'mesas' ? 'checked' : '' }}
-                            />
+                                {{ old('type_sell') === 'mesas' ? 'checked' : '' }} />
                             <span class="absolute bg-pgreen w-3 h-3 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></span>
                         </label>
                         <label class="text-white cursor-pointer text-sm" for="mesas">Mesas</label>
@@ -94,8 +93,7 @@
                                 class="peer h-5 w-5 cursor-pointer appearance-none rounded-full border border-slate-300 checked:border-slate-400 transition-all"
                                 id="comandas"
                                 value="comandas"
-                                {{ old('type_sell') === 'comandas' ? 'checked' : '' }}
-                            />
+                                {{ old('type_sell') === 'comandas' ? 'checked' : '' }} />
                             <span class="absolute bg-pgreen w-3 h-3 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></span>
                         </label>
                         <label class="text-white cursor-pointer text-sm" for="comandas">Comandas</label>
@@ -103,7 +101,7 @@
                 </div>
                 @error('type_sell') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
             </div>
-            
+
             <button type="submit" class="bg-pgreen text-black px-4 py-2 rounded-lg hover:bg-white transition mt-4">
                 Cadastrar
             </button>
