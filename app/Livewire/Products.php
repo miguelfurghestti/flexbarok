@@ -20,6 +20,7 @@ class Products extends Component
     }
 
     public $name;
+    public $image;
     public $description;
     public $price;
     public $qty;
@@ -35,9 +36,19 @@ class Products extends Component
     {
         return [
             'name' => 'required|string|max:255',
-            'price' => 'required',
+            'price' => 'required|string|max:10',
+            'description' => 'nullable|string|max:255',
+            'image' => 'nullable|string|max:255',
+            'qty' => 'nullable|string|max:10',
         ];
     }
+
+    protected $listeners = [
+        'productAdded' => '$refresh',
+        'productUpdated' => '$refresh',
+        'productDeleted' => '$refresh',
+    ];
+
 
     public function loadData()
     {
@@ -67,12 +78,40 @@ class Products extends Component
 
     public function openModal()
     {
-        $this->reset(['name', 'description', 'price',]);
+        $this->reset(['name', 'description', 'price', 'image']);
         $this->showModal = true;
     }
 
     public function closeModal()
     {
         $this->showModal = false;
+    }
+
+    public function save()
+    {
+        $this->validate();
+
+        $shop = Auth::user()->shop;
+        if (!$shop) {
+            $this->addError('general', 'Nenhuma loja associada ao usuário.');
+            return;
+        }
+
+        try {
+            $product = ModelsProducts::create([
+                'name' => $this->name,
+                'id_shop' => $shop->id,
+                'id_category' => $this->category,
+                'price' => $this->price,
+                'description' => $this->description,
+                'qty' => $this->qty,
+                'image' => $this->image,
+            ]);
+
+            $this->closeModal();
+            $this->dispatch('productAdded');
+        } catch (\Exception $e) {
+            $this->addError('general', 'Erro ao salvar cliente: ' . $e->getMessage());
+        }
     }
 }

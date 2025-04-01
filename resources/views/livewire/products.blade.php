@@ -29,100 +29,41 @@
     <div class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50">
         <div class="bg-zinc-900 p-6 rounded-xl shadow-xl text-center flex flex-col items-center w-96">
             <h2 class="text-lg font-semibold mb-3 text-white flex flex-row gap-2 items-center">
-                Cadastrar Categoria
+                Cadastrar Produto
             </h2>
-            <p class="text-zinc-400 text-sm mb-3">Preencha os dados e cadastre a categoria</p>
+            <p class="text-zinc-400 text-sm mb-3">Preencha os dados e cadastre o produto</p>
 
             <div class="flex flex-col gap-3 w-full">
                 <div class="flex flex-col w-full gap-1">
-                    <input type="text" name="name" wire:model="name" placeholder="Nome da Categoria" class="rounded-md p-2 text-black" required>
+                    <input type="text" name="name" wire:model="name" placeholder="Nome do Produto" class="rounded-md p-2 text-black text-sm" required>
                     @error('name') <span class="text-red-500">{{ $message }}</span> @enderror
                 </div>
 
-                <h1 class="text-zinc-400 text-sm">Selecione o ícone desta categoria</h1>
-                <div class="grid grid-cols-4 gap-3">
-
-                    <div class="flex items-center px-4 border border-zinc-600 rounded-sm cursor-pointer">
-                        <input checked id="bowl-food" type="radio" wire:model="icon" value="bowl-food" name="bordered-radio" class="w-4 h-4  bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
-                        <label for="bowl-food" class="py-4 ms-2 text-sm font-medium text-gray-900"><x-fas-bowl-food class="w-4 h-4 text-[#B1EE81]" /></label>
+                <div class="flex flex-row w-full gap-2 justify-between">
+                    <div class="flex flex-col w-auto">
+                        <label for="price" class="flex mb-2 text-sm font-medium text-gray-900 dark:text-white">Preço</label>
+                        <input type="text" name="price" wire:model="price" value="{{ old('price') }}" placeholder="Preço" class="rounded-md p-2 w-36 text-sm">
+                        @error('price') <span class="text-red-900 text-sm border bg-red-300 border-red-700 p-1">{{ $message }}</span> @enderror
                     </div>
 
-                    <div class="flex items-center ps-4 border border-zinc-600 rounded-sm">
-                        <input id="utensils" type="radio" wire:model="icon" value="utensils" name="bordered-radio" class="w-4 h-4 bg-gray-100 border-gray-300 focus:ring-blue-500focus:ring-2">
-                        <label for="utensils" class="py-4 ms-2 text-sm font-medium text-gray-900"><x-fas-utensils class="w-4 h-4 text-[#B1EE81]" /></label>
+                    <div class="flex flex-col w-full">
+                        <label for="qty" class="flex mb-2 text-sm font-medium text-gray-900 dark:text-white">Estoque</label>
+                        <input type="text" name="qty" wire:model="qty" value="{{ old('qty') }}" placeholder="Quantidade" class="rounded-md p-2 w-full text-sm">
+                        @error('qty') <span class="text-red-900 text-sm border bg-red-300 border-red-700 p-1">{{ $message }}</span> @enderror
                     </div>
-
-                    <div class="flex items-center px-4 border border-zinc-600 rounded-sm">
-                        <input id="burger" type="radio" wire:model="icon" value="burger" name="bordered-radio" class="w-4 h-4 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
-                        <label for="burger" class="py-4 ms-2 text-sm font-medium text-gray-900"><x-fas-burger class="w-4 h-4 text-[#B1EE81]" /></label>
-                    </div>
-
-                    <div class="flex items-center ps-4 border border-zinc-600 rounded-sm">
-                        <input id="mug-hot" type="radio" wire:model="icon" value="mug-hot" name="bordered-radio" class="w-4 h-4 bg-gray-100 border-gray-300 focus:ring-blue-500focus:ring-2">
-                        <label for="mug-hot" class="py-4 ms-2 text-sm font-medium text-gray-900"><x-fas-mug-hot class="w-4 h-4 text-[#B1EE81]" /></label>
-                    </div>
-
-                    <div class="flex items-center ps-4 border border-zinc-600 rounded-sm">
-                        <input id="fish" type="radio" wire:model="icon" value="fish" name="bordered-radio" class="w-4 h-4 bg-gray-100 border-gray-300 focus:ring-blue-500focus:ring-2">
-                        <label for="fish" class="py-4 ms-2 text-sm font-medium text-gray-900"><x-fas-fish class="w-4 h-4 text-[#B1EE81]" /></label>
-                    </div>
-
-                    <div class="flex items-center ps-4 border border-zinc-600 rounded-sm">
-                        <input id="martini-glass" type="radio" wire:model="icon" value="martini-glass" name="bordered-radio" class="w-4 h-4 bg-gray-100 border-gray-300 focus:ring-blue-500focus:ring-2">
-                        <label for="martini-glass" class="py-4 ms-2 text-sm font-medium text-gray-900"><x-fas-martini-glass class="w-4 h-4 text-[#B1EE81]" /></label>
-                    </div>
-
-                    <div class="flex items-center ps-4 border border-zinc-600 rounded-sm">
-                        <input id="wine-glass-empty" type="radio" wire:model="icon" value="wine-glass-empty" name="bordered-radio" class="w-4 h-4 bg-gray-100 border-gray-300 focus:ring-blue-500focus:ring-2">
-                        <label for="wine-glass-empty" class="py-4 ms-2 text-sm font-medium text-gray-900"><x-fas-wine-glass-empty class="w-4 h-4 text-[#B1EE81]" /></label>
-                    </div>
-
-                    <div class="flex items-center ps-4 border border-zinc-600 rounded-sm">
-                        <input id="glass-water" type="radio" wire:model="icon" value="glass-water" name="bordered-radio" class="w-4 h-4 bg-gray-100 border-gray-300 focus:ring-blue-500focus:ring-2">
-                        <label for="glass-water" class="py-4 ms-2 text-sm font-medium text-gray-900"><x-fas-glass-water class="w-4 h-4 text-[#B1EE81]" /></label>
-                    </div>
-
-                    <div class="flex items-center ps-4 border border-zinc-600 rounded-sm">
-                        <input id="ice-cream" type="radio" wire:model="icon" value="ice-cream" name="bordered-radio" class="w-4 h-4 bg-gray-100 border-gray-300 focus:ring-blue-500focus:ring-2">
-                        <label for="ice-cream" class="py-4 ms-2 text-sm font-medium text-gray-900"><x-fas-ice-cream class="w-4 h-4 text-[#B1EE81]" /></label>
-                    </div>
-
-                    <div class="flex items-center ps-4 border border-zinc-600 rounded-sm">
-                        <input id="bowl-rice" type="radio" wire:model="icon" value="bowl-rice" name="bordered-radio" class="w-4 h-4 bg-gray-100 border-gray-300 focus:ring-blue-500focus:ring-2">
-                        <label for="bowl-rice" class="py-4 ms-2 text-sm font-medium text-gray-900"><x-fas-bowl-rice class="w-4 h-4 text-[#B1EE81]" /></label>
-                    </div>
-
-                    <div class="flex items-center ps-4 border border-zinc-600 rounded-sm">
-                        <input id="pizza-slice" type="radio" wire:model="icon" value="pizza-slice" name="bordered-radio" class="w-4 h-4 bg-gray-100 border-gray-300 focus:ring-blue-500focus:ring-2">
-                        <label for="pizza-slice" class="py-4 ms-2 text-sm font-medium text-gray-900"><x-fas-pizza-slice class="w-4 h-4 text-[#B1EE81]" /></label>
-                    </div>
-
-                    <div class="flex items-center ps-4 border border-zinc-600 rounded-sm">
-                        <input id="drumstick-bite" type="radio" wire:model="icon" value="drumstick-bite" name="bordered-radio" class="w-4 h-4 bg-gray-100 border-gray-300 focus:ring-blue-500focus:ring-2">
-                        <label for="drumstick-bite" class="py-4 ms-2 text-sm font-medium text-gray-900"><x-fas-drumstick-bite class="w-4 h-4 text-[#B1EE81]" /></label>
-                    </div>
-
-                    <div class="flex items-center ps-4 border border-zinc-600 rounded-sm">
-                        <input id="shrimp" type="radio" wire:model="icon" value="shrimp" name="bordered-radio" class="w-4 h-4 bg-gray-100 border-gray-300 focus:ring-blue-500focus:ring-2">
-                        <label for="shrimp" class="py-4 ms-2 text-sm font-medium text-gray-900"><x-fas-shrimp class="w-4 h-4 text-[#B1EE81]" /></label>
-                    </div>
-
-                    <div class="flex items-center ps-4 border border-zinc-600 rounded-sm">
-                        <input id="store" type="radio" wire:model="icon" value="store" name="bordered-radio" class="w-4 h-4 bg-gray-100 border-gray-300 focus:ring-blue-500focus:ring-2">
-                        <label for="store" class="py-4 ms-2 text-sm font-medium text-gray-900"><x-fas-store class="w-4 h-4 text-[#B1EE81]" /></label>
-                    </div>
-
-                    <div class="flex items-center ps-4 border border-zinc-600 rounded-sm">
-                        <input id="bottle-water" type="radio" wire:model="icon" value="bottle-water" name="bordered-radio" class="w-4 h-4 bg-gray-100 border-gray-300 focus:ring-blue-500focus:ring-2">
-                        <label for="bottle-water" class="py-4 ms-2 text-sm font-medium text-gray-900"><x-fas-bottle-water class="w-4 h-4 text-[#B1EE81]" /></label>
-                    </div>
-
-                    <div class="flex items-center ps-4 border border-zinc-600 rounded-sm">
-                        <input id="hotdog" type="radio" wire:model="icon" value="hotdog" name="bordered-radio" class="w-4 h-4 bg-gray-100 border-gray-300 focus:ring-blue-500focus:ring-2">
-                        <label for="hotdog" class="py-4 ms-2 text-sm font-medium text-gray-900"><x-fas-hotdog class="w-4 h-4 text-[#B1EE81]" /></label>
-                    </div>
-
                 </div>
+
+                <div class="flex flex-col w-full gap-1">
+                    <label for="description" class="flex mb-2 text-sm font-medium text-gray-900 dark:text-white">Descrição</label>
+                    <textarea id="description" name="description" wire:model="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300" placeholder="Digite a descrição do produto..."></textarea>
+                </div>
+
+                <div class="flex flex-col w-full gap-1">
+                    <label for="description" class="flex mb-2 text-sm font-medium text-gray-900 dark:text-white">Foto do produto</label>
+                    <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file">
+                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
+                </div>
+
 
             </div>
 
