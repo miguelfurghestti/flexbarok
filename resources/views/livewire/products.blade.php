@@ -7,17 +7,28 @@
     </div>
 
     <!-- Lista de Produtos -->
-    <div class="flex flex-col w-full gap-2 rounded-lg px-2 py-3">
+    <div class="flex flex-col w-full gap-2 rounded-lg">
         @if($products->isEmpty())
         <div class="text-center text-lg mt-4 text-gray-500">
             Nenhum produto encontrado!
         </div>
         @else
-        <div class="grid grid-cols-4 gap-4 mt-4">
+        <div class="grid 2xl:grid-cols-6 xl:grid-cols-4 sm:grid-cols-2 gap-4 mt-4">
             @foreach($products as $product)
-            <div>
-                <h1 class="text-white">{{ $product->name }}</h1>
-                <h1 class="text-white">{{ $product->price }}</h1>
+            <div class="bg-white p-3 flex flex-col gap-2 items-center text-white justify-between">
+                <img class="h-48 w-96 object-cover" 
+     src="{{ $product->image === 'img/no-photo.png' ? asset('img/' . 'no-photo.png') : asset('storage/' . $product->image) }}" 
+     alt="{{ $product->name }}">
+
+                <h1 class="text-black font-semibold text-lg">{{ $product->name }}</h1>
+                <div class="flex flex-row gap-3">
+                    <span class="text-black">R$ {{ $product->price }}</span>
+                    <span class="text-black">Estoque: {{ $product->qty }}</span>
+                </div>  
+                <div class="flex flex-row gap-3">
+                    <button wire:click="save" class="bg-blue-400 text-blue-950 text-sm p-2 hover:bg-white transition">Editar</button>
+                    <button wire:click="closeModal" class="bg-red-400 text-red-950 text-sm p-2 hover:bg-white transition">Excluir</button>
+                </div>
             </div>
             @endforeach
         </div>

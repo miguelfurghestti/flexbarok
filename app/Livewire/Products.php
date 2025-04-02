@@ -43,7 +43,7 @@ class Products extends Component
             'name' => 'required|string|max:255',
             'price' => 'required|string|max:10',
             'description' => 'nullable|string|max:255',
-            'image' => 'nullable|image|max:8192',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:8192',
             'qty' => 'nullable|string|max:10',
         ];
     }
@@ -62,8 +62,9 @@ class Products extends Component
             'description.string' => 'A descrição deve ser um texto válido.',
             'description.max' => 'A descrição não pode ter mais de 255 caracteres.',
 
-            'image.image' => 'O arquivo deve ser uma imagem válida.',
-            'image.max' => 'A imagem não pode ter mais de 8MB.',
+            'image.image' => 'O arquivo enviado deve ser uma imagem.',
+            'image.mimes' => 'Formato inválido. Apenas JPEG, PNG, JPG e GIF são permitidos.',
+            'image.max'   => 'A imagem não pode ter mais que 8MB.',
 
             'qty.string' => 'A quantidade deve ser um valor válido.',
             'qty.max' => 'A quantidade não pode ter mais de 10 caracteres.',
@@ -130,34 +131,39 @@ class Products extends Component
 
         try {
             Log::info('Salvando imagem...');
-            $imagePath = null;
-            if ($this->image) {
-                $imagePath = $this->image->store('products', 'public');
+            $imagePath = $this->image ? $this->image->store('products', 'public') : 'img/no-photo.png';
+
+            if (!$this->category) {
+                throw new \Exception('Categoria não encontrada.');
             }
 
-            Log::info('Criando produto no banco de dados...');
-            Log::info('Categoria carregada', ['category' => $this->category]);
-            $product = ModelsProducts::create([
-                'name' => $this->name,
-                'id_shop' => $shop->id,
-                'id_category' => $this->category->id ?? null,
-                'price' => $this->price,
+            Log::info('Criando produto no banco de dados...', ['category' => $this->category->id]);
+
+            $product = new ModelsProducts();
+            $product->fill([
+                'name'        => $this->name,
+                'id_shop'     => $shop->id,
+                'id_category' => $this->category->id,
+                'price'       => $this->price,
                 'description' => $this->description,
-                'qty' => $this->qty,
-                'image' => $imagePath,
+                'qty'         => $this->qty,
+                'image'       => $imagePath,
             ]);
 
-            Log::info('Produto criado com sucesso: ', ['id' => $product->id]);
+            $product->save();
+
+            Log::info('Produto criado com sucesso!', ['id' => $product->id]);
 
             $this->loadData();
-
             $this->reset(['name', 'price', 'description', 'qty', 'image']);
-
             $this->closeModal();
             $this->dispatch('productAdded');
         } catch (\Exception $e) {
-            Log::error('Erro ao salvar produto: ' . $e->getMessage());
-            $this->addError('general', 'Erro ao salvar produto: ' . $e->getMessage());
+            Log::error('Erro ao salvar produto', [
+                'message' => $e->getMessage(),
+                'trace'   => $e->getTraceAsString()
+            ]);
+            $this->addError('general', 'Erro ao salvar produto. Tente novamente.');
         }
     }
 }

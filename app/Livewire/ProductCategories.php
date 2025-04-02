@@ -4,6 +4,8 @@ namespace App\Livewire;
 
 use App\Models\ProductsCategorys;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 
 class ProductCategories extends Component
@@ -132,6 +134,20 @@ class ProductCategories extends Component
     public function delete()
     {
         $productCategory = ProductsCategorys::findOrFail($this->productCategoryIdToDelete);
+
+        // Percorre todos os produtos da categoria
+        foreach ($productCategory->products as $product) {
+            if ($product->image) {
+                Log::info('Tentando excluir imagem: ' . $product->image);
+                if (Storage::disk('public')->exists($product->image)) {
+                    Storage::disk('public')->delete($product->image);
+                    Log::info('Imagem excluída: ' . $product->image);
+                } else {
+                    Log::warning('Imagem não encontrada no storage: ' . $product->image);
+                }
+            }
+        }
+
         $productCategory->delete();
 
         $this->closeDeleteModal();
