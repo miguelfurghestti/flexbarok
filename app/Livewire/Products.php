@@ -46,7 +46,7 @@ class Products extends Component
             'price' => 'required|string|max:10',
             'description' => 'nullable|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:8192',
-            'qty' => 'nullable|max:10',
+            'qty' => 'required|max:10',
         ];
     }
 
@@ -69,6 +69,7 @@ class Products extends Component
             'image.max'   => 'A imagem não pode ter mais que 8MB.',
 
             'qty.max' => 'A quantidade não pode ter mais de 10 caracteres.',
+            'qty.required' => 'O campo estoque é obrigatório.',
         ];
     }
     protected $listeners = [

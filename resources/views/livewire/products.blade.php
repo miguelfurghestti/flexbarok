@@ -36,7 +36,7 @@
     </div>
 
     <div class="flex mt-4">
-        <a href="/cardapio" class="flex flex-row bg-white p-2 rounded-md gap-3 items-center">
+        <a href="/cardapio" class="flex flex-row bg-white px-4 p-2 rounded-md gap-3 items-center">
             <x-fas-arrow-left class="w-4" />
             <span class="font-medium">Voltar ao cardápio</span>
         </a>

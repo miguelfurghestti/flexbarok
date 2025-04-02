@@ -176,9 +176,9 @@
         <div class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50">
             <div class="bg-zinc-900 p-6 rounded-xl shadow-xl text-center flex flex-col items-center w-96">
                 <h2 class="text-lg font-semibold mb-3 text-white flex flex-row gap-2 items-center">
-                    Cadastrar Categoria
+                    Alterar Categoria
                 </h2>
-                <p class="text-zinc-400 text-sm mb-3">Preencha os dados e cadastre a categoria</p>
+                <p class="text-zinc-400 text-sm mb-3">Preencha os dados e altere a categoria</p>
 
                 <div class="flex flex-col gap-3 w-full">
                     <div class="flex flex-col w-full gap-1">
