@@ -16,8 +16,8 @@
         <div class="grid grid-cols-4 gap-4 mt-4">
             @foreach($products as $product)
             <div>
-                <h1>{{ $product->name }}</h1>
-                <h1>{{ $product->price }}</h1>
+                <h1 class="text-white">{{ $product->name }}</h1>
+                <h1 class="text-white">{{ $product->price }}</h1>
             </div>
             @endforeach
         </div>
@@ -56,14 +56,17 @@
                 <div class="flex flex-col w-full gap-1">
                     <label for="description" class="flex mb-2 text-sm font-medium text-gray-900 dark:text-white">Descrição</label>
                     <textarea id="description" name="description" wire:model="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300" placeholder="Digite a descrição do produto..."></textarea>
+                    @error('description') <span class="text-red-500">{{ $message }}</span> @enderror
+
                 </div>
 
                 <div class="flex flex-col w-full gap-1">
-                    <label for="description" class="flex mb-2 text-sm font-medium text-gray-900 dark:text-white">Foto do produto</label>
-                    <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file">
+                    <label for="image" class="flex mb-2 text-sm font-medium text-gray-900 dark:text-white">Foto do produto</label>
+                    <input name="image" wire:model="image" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="image" type="file">
                     <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
+                    @error('image') <span class="text-red-500">{{ $message }}</span> @enderror
+                    
                 </div>
-
 
             </div>
 

@@ -17,6 +17,7 @@ class Products extends Model
         'price',
         'id_category',
         'id_shop',
+        'image',
         'qty',
     ];
 
