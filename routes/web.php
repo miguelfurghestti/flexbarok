@@ -32,7 +32,9 @@ Route::get('/', function () {
     return view('login.index');
 })->name('index');
 
-Route::get('/comandas', [ShopsController::class, 'index'])->middleware(IsShop::class)->name('shop.dashboard');
+Route::get('/comandas', function () {
+    return view('shop.orders');
+})->middleware(IsShop::class)->name('shop.orders');
 
 Route::get('/quadras', [CourtsController::class, 'index'])->middleware(IsShop::class)->name('shop.courts');
 
@@ -40,6 +42,7 @@ Route::get('/clientes', [CustomersController::class, 'index'])->middleware(IsSho
 
 Route::get('/reservas', [ReservationsController::class, 'index'])->middleware(IsShop::class)->name('shop.reservations');
 
+Route::get('/pedidos', [ShopsController::class, 'index'])->middleware(IsShop::class)->name('shop.orders');
 
 //CARDÁPIO
 Route::get('/cardapio', [ProductsCategorysController::class, 'index'])->middleware(IsShop::class)->name('shop.products');

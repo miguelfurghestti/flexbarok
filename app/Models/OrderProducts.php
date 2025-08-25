@@ -14,12 +14,20 @@ class OrderProducts extends Model
     protected $fillable = [
         'id_order',
         'id_shop',
-        'id_product'
+        'id_product',
+        'quantity',
+        'unit_price',
+        'notes',
     ];
 
     protected $hidden = [
         'created_at',
         'updated_at',
+    ];
+
+    protected $casts = [
+        'unit_price' => 'decimal:2',
+        'quantity' => 'integer',
     ];
 
     public function order()
@@ -35,5 +43,10 @@ class OrderProducts extends Model
     public function product()
     {
         return $this->belongsTo(Products::class, 'id_product', 'id');
+    }
+
+    public function getSubtotalAttribute()
+    {
+        return $this->quantity * $this->unit_price;
     }
 }

@@ -68,7 +68,6 @@ class Reservations extends Component
         $this->date = now()->format('Y-m-d');
     }
 
-
     public function render()
     {
         $user = Auth::user();
